@@ -49,7 +49,9 @@ public class AdminController {
 		 
 	}
 	
-	public String searchStudent() {
+	public String searchStudent(Model m) {
+		List<Student> list=ssi.searchStudentBYBatch();
+		m.addAttribute("data",list)
 		return "adminscreen";
 	}
 
