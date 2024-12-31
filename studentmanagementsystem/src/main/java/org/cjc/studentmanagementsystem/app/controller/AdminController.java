@@ -48,5 +48,9 @@ public class AdminController {
 		
 		 
 	}
+	
+	public String searchStudent() {
+		return "adminscreen";
+	}
 
 }
