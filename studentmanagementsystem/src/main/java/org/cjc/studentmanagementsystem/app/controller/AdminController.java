@@ -49,10 +49,42 @@ public class AdminController {
 		 
 	}
 	
-	public String searchStudent(Model m) {
-		List<Student> list=ssi.searchStudentBYBatch();
-		m.addAttribute("data",list)
+	@RequestMapping("/search")
+	public String searchStudent(@RequestParam("batchNumber") String batchNumber, Model m) {
+		List<Student> list = ssi.searchStudentByBatch(batchNumber);
+		if (list.size() > 0) {
+			m.addAttribute("data", list);
+
+		} else {
+			List<Student> ls = ssi.viewStudent();
+			m.addAttribute("data", ls);
+			m.addAttribute("message", "Student not found for:" + batchNumber);
+
+		}
+		return "adminscreen";
+
+	}
+	@RequestMapping("/fees")
+	public String onFees(@RequestParam("id") int id,Model m) {
+		Student s=ssi.getSingleStudent(id);
+		m.addAttribute("st", s);
+		return "fees";
+		
+	}
+	
+	@RequestMapping("/payfees")
+	public String payFees(@RequestParam("studentid") int id,@RequestParam("ammount") int amt,Model m) {
+		List<Student> list=ssi.payFees(id,amt);
+		m.addAttribute("data", list);	
 		return "adminscreen";
 	}
+	@RequestMapping("/remove")
+	public String removeStudent(@RequestParam("id") int id,Model m) {
+		List<Student> list=ssi.removeStudent(id);
+		m.addAttribute("data", list);
+		return "adminscreen";
+		
+	}
+	
 
 }
