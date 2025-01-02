@@ -18,4 +18,6 @@ public List<Student> payFees(int id, int amt);
 
 public List<Student> removeStudent(int id);
 
+public List<Student> changeBatch(int id, String batchNumber);
+
 }

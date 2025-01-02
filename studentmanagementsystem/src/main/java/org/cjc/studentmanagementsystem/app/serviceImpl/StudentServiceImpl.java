@@ -57,4 +57,16 @@ public class StudentServiceImpl implements StudentServiceI{
 		return sr.findAll();
 	}
 
+	@Override
+	public List<Student> changeBatch(int id,String batchNumber) {
+		Optional<Student> byId = sr.findById(id);
+		if(byId.isPresent()) {
+			Student s = byId.get();
+			s.setBatchNumber(batchNumber);
+			sr.save(s);
+			
+		}
+		return sr.findAll();
+	}
+
 }
