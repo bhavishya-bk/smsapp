@@ -50,8 +50,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/search")
-	public String searchStudent(@RequestParam("batchNumber") String batchNumber, Model m) {
-		List<Student> list = ssi.searchStudentByBatch(batchNumber);
+	public String searchStudent(@RequestParam("batchNumber") String batchNumber,@RequestParam("batchMode") String bmode,Model m) {
+		List<Student> list = ssi.searchStudentByBatch(batchNumber,bmode);
 		if (list.size() > 0) {
 			m.addAttribute("data", list);
 

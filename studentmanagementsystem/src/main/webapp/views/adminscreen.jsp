@@ -10,12 +10,11 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
-	
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <style type="text/css">
 .enroll {
-	background-image: url("images/addstudent.jpg");
+	background-image: url("images/studentenrollment.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -31,34 +30,26 @@ form {
 }
 
 .view {
-	background-image: url("images/viewstudent.jpg");
+	background-image: url("images/studentdetail.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 </style>
 
 <script type="text/javascript">
+	function fees() {
+		document.fn.action = "/fees"
+		document.action.submit();
+	}
 
- function fees()
- {
- document.fn.action="/fees"
- document.action.submit();
- }
- 
- 
- function batch()
- {
- document.fn.action="/batch"
- document.action.submit();
- }
- function remove()
- {
- document.fn.action="/remove"
- document.action.submit();
- }
- 
-
- 
+	function batch() {
+		document.fn.action = "/batch"
+		document.action.submit();
+	}
+	function remove() {
+		document.fn.action = "/remove"
+		document.action.submit();
+	}
 </script>
 
 </head>
@@ -83,98 +74,135 @@ form {
 						<div class="card shadow-2-strong card-registration mt-0"
 							style="border-radius: 15px;">
 							<div class="card-body mt-0">
-								<h3 class="heading">Student Enrollment Form</h3>
+								
 
-								<form action="enroll_student">
-									<div class="row ">
-										<div class="col-md-6 mb-2">
-											<div class="form-outline">
-												<input type="text" id="firstName"
-													class="form-control form-control-sm" name="studentFullName" />
-												<label class="form-label" for="firstName">First Full
-													Name</label>
-											</div>
-										</div>
-										<div class="col-md-6 mb-2">
-											<div class="form-outline">
-												<input type="email" id="lastName"
-													class="form-control form-control-sm" name="studentEmail" />
-												<label class="form-label" for="lastName">Student
-													Email</label>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 mb-2 d-flex align-items-center">
-											<div class="form-outline datepicker w-100">
-												<input type="number" class="form-control form-control-sm"
-													id="birthdayDate" name="studentAge" /> <label
-													for="birthdayDate" class="form-label">Student Age</label>
-											</div>
-										</div>
-
-										<div class="col-md-6 mb-2 pb-2">
-											<div class="form-outline">
-												<input type="tel" id="text"
-													class="form-control form-control-sm"
-													name="studentCollegeName" /> <label class="form-label"
-													for="phoneNumber">Student Collage Name</label>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-6 mb-2 pb-2">
-											<div class="form-outline">
-												<input type="number" id="emailAddress"
-													class="form-control form-control-sm" name="feesPaid" /> <label
-													class="form-label" for="emailAddress">Fees Paid</label>
-											</div>
-										</div>
-										<div class="col-md-6 mb-2">
-											<h6 class="mb-2 pb-1">Student Course :</h6>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="java" value="Java" checked /> <label
-													class="form-check-label" for="java">Java</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="python" value="Python" /> <label
-													class="form-check-label" for="python">Python</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio"
-													name="studentCourse" id="testing" value="Testing" /> <label
-													class="form-check-label" for="testing">Testing</label>
-											</div>
-										</div>
-
-									</div>
-									<div class="row">
-										<div class="col">
-											<select class="select form-control-sm" name="batchMode">
-												<option value="#" disabled>Select Batch Mode</option>
-												<option value="Online">Online</option>
-												<option value="Offline">Offline</option>
-
-											</select> <label class="form-label select-label">Batch Mode</label>
-										</div>
-										<div class="col">
-											<select class="select form-control-sm" name="batchNumber">
-												<option value="#" disabled>Select Batch Number</option>
-												<option value="FDJ-185">FDJ-185</option>
-												<option value="REG-185">REG-185</option>
-												<option value="FDJ-161">FDJ-161</option>
-												<option value="REG-161">REG-161</option>
-
-											</select> <label class="form-label select-label">Batch Number</label>
-										</div>
-									</div>
-									<div class="mt-2 pt-2 d-flex justify-content-center">
-										<input class="btn btn-primary btn-lg" type="submit"
-											value="Submit" />
-									</div>
-								</form>
+								<form action="enroll_student" method="post" class="p-4 shadow rounded bg-light">
+    <h4 class="text-center mb-4 text-primary">Student Enrollment Form</h4>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="studentFullName" class="form-label fw-bold">Full Name</label>
+            <input
+                type="text"
+                id="studentFullName"
+                class="form-control"
+                name="studentFullName"
+                placeholder="Enter full name"
+                required
+            />
+        </div>
+        <div class="col-md-6">
+            <label for="studentEmail" class="form-label fw-bold">Email</label>
+            <input
+                type="email"
+                id="studentEmail"
+                class="form-control"
+                name="studentEmail"
+                placeholder="Enter email address"
+                required
+            />
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-md-6">
+            <label for="studentAge" class="form-label fw-bold">Age</label>
+            <input
+                type="number"
+                id="studentAge"
+                class="form-control"
+                name="studentAge"
+                placeholder="Enter age"
+                required
+                min="10"
+                max="100"
+            />
+        </div>
+        <div class="col-md-6">
+            <label for="studentCollegeName" class="form-label fw-bold">College Name</label>
+            <input
+                type="text"
+                id="studentCollegeName"
+                class="form-control"
+                name="studentCollegeName"
+                placeholder="Enter college name"
+                required
+            />
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-md-6">
+            <label for="feesPaid" class="form-label fw-bold">Fees Paid</label>
+            <input
+                type="number"
+                id="feesPaid"
+                class="form-control"
+                name="feesPaid"
+                placeholder="Enter fees paid"
+                required
+                min="0"
+            />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Course</label>
+            <div class="d-flex align-items-center gap-3">
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="studentCourse"
+                        id="java"
+                        value="Java"
+                        checked
+                    />
+                    <label class="form-check-label" for="java">Java</label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="studentCourse"
+                        id="python"
+                        value="Python"
+                    />
+                    <label class="form-check-label" for="python">Python</label>
+                </div>
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="radio"
+                        name="studentCourse"
+                        id="testing"
+                        value="Testing"
+                    />
+                    <label class="form-check-label" for="testing">Testing</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-3 mt-3">
+        <div class="col-md-6">
+            <label for="batchMode" class="form-label fw-bold">Batch Mode</label>
+            <select id="batchMode" class="form-select" name="batchMode" required>
+                <option value="" disabled selected>Select Batch Mode</option>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="batchNumber" class="form-label fw-bold">Batch Number</label>
+            <select id="batchNumber" class="form-select" name="batchNumber" required>
+                <option value="" disabled selected>Select Batch Number</option>
+                <option value="FDJ-185">FDJ-185</option>
+                <option value="REG-185">REG-185</option>
+                <option value="FDJ-161">FDJ-161</option>
+                <option value="REG-161">REG-161</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
+    </div>
+</form>
+								
 							</div>
 						</div>
 					</div>
@@ -182,80 +210,83 @@ form {
 			</div>
 		</section>
 		<section class="view" style="height: 530px" id="view">
-			<h1 class="text-center" style="color:blue">Student Details..!</h1>
-			 <div class="text-center w-100">
- <form action="search" class="w-100">
- <select class="select form-control-sm border border-primary"
-name="batchNumber">
- <option value="#" slected>Select Batch Number</option>
- <option value="FDJ-185">FDJ-185</option>
- <option value="REG-185">REG-185</option>
- <option value="FDJ-161">FDJ-161</option>
- <option value="REG-161">REG-161</option>
- 
- 
- </select>
- <button class="btn btn-outline-primary mb-1">Search</button> 
- </form>
- <marquee>
- <h1 style="color: red;">
- ${message }
- </h1>
- </marquee>
- </div>
- 
- <form name="fn">
-			<table class="table table-hover" style="font-size: small">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Student Name</th>
-						<th>Student Email</th>
-						<th>Age</th>
-						<th>Collage Name</th>
-						<th>Course Name</th>
-						<th>Bath No</th>
-						<th>Mode</th>
-						<th>Fess Recived</th>
-						<th>Select</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${data}" var="s">
+			<h1 class="text-center" style="color: blue">Student Details..!</h1>
+			<div class="text-center w-100">
+				<form action="search" class="w-100">
+					<select class="select form-control-sm border border-primary"
+						name="batchNumber">
+						<option value="#" slected>Select Batch Number</option>
+						<option value="FDJ-185">FDJ-185</option>
+						<option value="REG-185">REG-185</option>
+						<option value="FDJ-161">FDJ-161</option>
+						<option value="REG-161">REG-161</option>
+
+
+					</select> <select class="select form-control-sm" name="batchMode">
+						<option value="#" disabled>Select Batch Mode</option>
+						<option value="Online">Online</option>
+						<option value="Offline">Offline</option>
+
+					</select>
+
+					<button class="btn btn-outline-primary mb-1">Search</button>
+				</form>
+				<marquee>
+					<h1 style="color: red;">${message }</h1>
+				</marquee>
+			</div>
+
+			<form name="fn">
+				<table class="table table-hover" style="font-size: small">
+					<thead>
 						<tr>
-							<td>${s.studentId}</td>
-							<td>${s.studentFullName}</td>
-							<td>${s.studentEmail}</td>
-							<td>${s.studentAge}</td>
-							<td>${s.studentCollegeName}</td>
-							<td>${s.studentCourse}</td>
-							<td>${s.batchNumber}</td>
-							<td>${s.batchMode}</td>
-							<td>${s.feesPaid}</td>
-							<td>
- 								<input type="radio" name="id" value="${s.studentId}">
- 							</td>
-							<td>
-								<div class="btn-group btn-group-sm" role="group"
-									aria-label="...">
-									
-									
-									
-									<button class="btn btn-outline-success" onclick="fees()">PayFees</button>
-									<button class="btn btn-outline-primary" onclick="batch()">ShiftBatch</button>
-									<button class="btn btn-outline-danger" onclick="remove()">Remove</button>
-
-								</div>
-
-							</td>
-
+							<th>ID</th>
+							<th>Student Name</th>
+							<th>Student Email</th>
+							<th>Age</th>
+							<th>Collage Name</th>
+							<th>Course Name</th>
+							<th>Bath No</th>
+							<th>Mode</th>
+							<th>Fess Recived</th>
+							<th>Select</th>
+							<th>Actions</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach items="${data}" var="s">
+							<tr>
+								<td>${s.studentId}</td>
+								<td>${s.studentFullName}</td>
+								<td>${s.studentEmail}</td>
+								<td>${s.studentAge}</td>
+								<td>${s.studentCollegeName}</td>
+								<td>${s.studentCourse}</td>
+								<td>${s.batchNumber}</td>
+								<td>${s.batchMode}</td>
+								<td>${s.feesPaid}</td>
+								<td><input type="radio" name="id" value="${s.studentId}">
+								</td>
+								<td>
+									<div class="btn-group btn-group-sm" role="group"
+										aria-label="...">
 
-				</tbody>
 
-			</table>
+
+										<button class="btn btn-outline-success" onclick="fees()">PayFees</button>
+										<button class="btn btn-outline-primary" onclick="batch()">ShiftBatch</button>
+										<button class="btn btn-outline-danger" onclick="remove()">Remove</button>
+
+									</div>
+
+								</td>
+
+							</tr>
+						</c:forEach>
+
+					</tbody>
+
+				</table>
 			</form>
 		</section>
 	</div>

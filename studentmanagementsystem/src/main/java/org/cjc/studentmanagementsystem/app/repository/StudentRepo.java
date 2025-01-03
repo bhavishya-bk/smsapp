@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepo extends JpaRepository<Student,Integer> {
 
-	List<Student> findAllByBatchNumber(String batchNumber);
+//	List<Student> findAllByBatchNumber(String batchNumber);
+
+	List<Student> findAllByBatchNumberAndBatchMode(String batchNumber, String bmode);
 
 }

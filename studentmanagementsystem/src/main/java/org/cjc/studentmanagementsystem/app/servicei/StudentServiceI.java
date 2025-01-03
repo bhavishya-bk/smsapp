@@ -10,7 +10,7 @@ public	List<Student> addStudent(Student s);
 
 public List<Student> viewStudent();
 
-public List<Student> searchStudentByBatch(String batchNumber);
+public List<Student> searchStudentByBatch(String batchNumber, String bmode);
 
 public Student getSingleStudent(int id);
 
