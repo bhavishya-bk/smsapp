@@ -7,6 +7,9 @@ import org.cjc.studentmanagementsystem.app.model.Student;
 import org.cjc.studentmanagementsystem.app.repository.StudentRepo;
 import org.cjc.studentmanagementsystem.app.servicei.StudentServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -68,6 +71,14 @@ public class StudentServiceImpl implements StudentServiceI{
 			
 		}
 		return sr.findAll();
+	}
+
+	@Override
+	public List<Student> paging(int pageNo, int pageSize) {
+		Pageable pg=PageRequest.of(pageNo, pageSize,Sort.by("studentFullName").ascending() );
+		List<Student> list = sr.findAll(pg).getContent();
+		
+		return list;
 	}
 
 }

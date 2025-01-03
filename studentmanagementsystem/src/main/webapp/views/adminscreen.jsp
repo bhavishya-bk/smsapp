@@ -32,7 +32,7 @@ form {
 .view {
 	background-image: url("images/studentdetail.jpg");
 	background-size: cover;
-	background-repeat: no-repeat;
+	 background-repeat:repeat-y;
 }
 </style>
 
@@ -288,6 +288,16 @@ form {
 
 				</table>
 			</form>
+			<nav aria-label="...">
+  <ul class="pagination pagination-lg">
+    <li class="page-item">
+      <a class="page-link" href="paging?pageNo=0" tabindex="-1">1</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="paging?pageNo=1">2</a></li>
+    <li class="page-item"><a class="page-link" href="paging?pageNo=2">3</a></li>
+    <li class="page-item"><a class="page-link" href="paging?pageNo=3">4</a></li>
+  </ul>
+</nav>
 		</section>
 	</div>
 

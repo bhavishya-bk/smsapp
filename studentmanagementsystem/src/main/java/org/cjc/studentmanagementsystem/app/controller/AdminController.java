@@ -99,6 +99,14 @@ public class AdminController {
 		return "adminscreen";
 	}
 	
+	@RequestMapping("/paging")
+	public String paging(@RequestParam("pageNo") int pageNo,Model m) {
+		List<Student> list=ssi.paging(pageNo,3);
+		m.addAttribute("data", list);
+		
+		return "adminscreen";
+	}
+	
 
 
 }

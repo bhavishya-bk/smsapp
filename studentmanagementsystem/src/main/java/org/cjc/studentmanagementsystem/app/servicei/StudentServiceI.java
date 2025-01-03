@@ -20,4 +20,6 @@ public List<Student> removeStudent(int id);
 
 public List<Student> changeBatch(int id, String batchNumber, String bmode);
 
+public List<Student> paging(int pageNo, int pageSize);
+
 }
