@@ -54,6 +54,14 @@
             <option value="REG-161">REG-161</option>
         </select>
     </div>
+    <div class="col">
+											<select class="select form-control-sm" name="batchMode">
+												<option value="#" disabled>Select Batch Mode</option>
+												<option value="Online">Online</option>
+												<option value="Offline">Offline</option>
+
+											</select> <label class="form-label select-label">Batch Mode</label>
+										</div>
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Change Batch</button>

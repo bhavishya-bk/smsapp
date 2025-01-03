@@ -93,8 +93,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/changeBatch")
-	public String changeBatch(@RequestParam("studentId") int id,@RequestParam("batchNumber") String batchNumber,Model m) {
-		List<Student> list=ssi.changeBatch(id,batchNumber);
+	public String changeBatch(@RequestParam("studentId") int id,@RequestParam("batchNumber") String batchNumber,@RequestParam("batchMode") String bmode,Model m) {
+		List<Student> list=ssi.changeBatch(id,batchNumber,bmode);
 		m.addAttribute("data", list);
 		return "adminscreen";
 	}
