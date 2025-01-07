@@ -76,7 +76,7 @@ form {
 							<div class="card-body mt-0">
 								
 
-								<form action="enroll_student" method="post" class="p-4 shadow rounded bg-light">
+								<form action="enroll_student" method="post" enctype="multipart/form-data" class="p-4 shadow rounded bg-light" >
     <h4 class="text-center mb-4 text-primary">Student Enrollment Form</h4>
     <div class="row g-3">
         <div class="col-md-6">
@@ -137,6 +137,18 @@ form {
                 class="form-control"
                 name="feesPaid"
                 placeholder="Enter fees paid"
+                required
+                min="0"
+            />
+        </div>
+         <div class="col-md-6">
+            <label for="image" class="form-label fw-bold">Upload Photo</label>
+            <input
+                type="file"
+                id="image"
+                class="form-control"
+                name="photo"
+                placeholder=""
                 required
                 min="0"
             />
@@ -241,6 +253,7 @@ form {
 					<thead>
 						<tr>
 							<th>ID</th>
+							<th>Photo</th>
 							<th>Student Name</th>
 							<th>Student Email</th>
 							<th>Age</th>
@@ -257,6 +270,7 @@ form {
 						<c:forEach items="${data}" var="s">
 							<tr>
 								<td>${s.studentId}</td>
+								<td><img alt="" src="data:image/jpeg;base64,${s.photo}" width="150" height="200"></td>
 								<td>${s.studentFullName}</td>
 								<td>${s.studentEmail}</td>
 								<td>${s.studentAge}</td>

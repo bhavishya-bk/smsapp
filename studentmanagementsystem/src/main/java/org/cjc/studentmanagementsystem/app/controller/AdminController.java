@@ -1,5 +1,7 @@
 package org.cjc.studentmanagementsystem.app.controller;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.cjc.studentmanagementsystem.app.model.Student;
@@ -9,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class AdminController {
@@ -39,8 +43,28 @@ public class AdminController {
 		
 	}
 	
-	@RequestMapping("/enroll_student")
-	public String addStudent(@ModelAttribute Student s,Model m) {
+	@RequestMapping(value = "/enroll_student",method=RequestMethod.POST)
+	public String addStudent(@RequestParam("studentFullName") String name,@RequestParam("studentEmail") String email,
+			@RequestParam("studentAge") int age,@RequestParam("studentCollegeName") String cname,
+			@RequestParam("studentCourse") String course,@RequestParam("batchNumber") String batch,
+			@RequestParam("batchMode") String mode,@RequestParam("feesPaid") int fees,MultipartFile photo
+			,Model m) throws IOException {
+		
+		Student s=new Student();
+		s.setStudentFullName(name);
+		s.setStudentEmail(email);
+		s.setStudentAge(age);
+		s.setStudentCollegeName(cname);
+		s.setStudentCourse(course);
+		s.setBatchNumber(batch);
+		s.setBatchMode(mode);
+		
+		System.out.println(photo.getOriginalFilename());
+		
+		String image=Base64.getEncoder().encodeToString(photo.getBytes());
+		s.setPhoto(image);
+		
+	
 		List<Student> list=ssi.addStudent(s);
 		
 		m.addAttribute("data", list);
